@@ -1,0 +1,234 @@
+div id app
+  header 
+   - h1 OK
+   - div class search OK
+     -label for input-serch OK
+     - input placeholder usuario do github tipo text OK
+     -button OK
+  table
+    cabeçalho OK
+      - 1 linha OK
+        - 4 colunas (Usuário, Repositorios, Seguidores, vazia) OK
+    corpo
+      -1 linha  OK
+        -4 colunas
+          1 coluna class user OK
+            -imagem do git OK
+            -a OK
+              -p nome do usuario OK
+              -span com nome do usuario OK
+          2 coluna class repositories OK
+            -76 OK
+          3 coluna class followers OK
+            -9568 OK
+          4 coluna OK
+            -botão $times; OK
+  
+
+  CSS
+  Resetar o CSS
+  root
+     -font size para 10 px OK
+    --ff-primary popoins 400 600 OK
+    --tet color #303030 OK
+    -- 194 OK
+    --primary-color hsl(varhue, 100%,63%) OK
+  body 
+    - font-size 1.6 OK
+    -color var text color OK
+    background rgb 250,254,255 OK
+  body *
+    font-family ff-primary OK
+  button 
+    backgrounf-color primarycolor
+
+#app
+max-width: 500px OK
+margin 0 auto OK
+padding 2rem OK
+
+header 
+flex OK
+space-between OK
+aling item center OK
+
+.sr-only{
+  position absolute OK
+  width e height 1px OK
+  paddin 0 OK
+  margin -1px OK
+  overflow hidden OK
+  clip react(0,0,0,0) OK
+  white-space nowrap OK
+  corder-width 0 OK
+  
+}
+
+header
+margin2.5rem 0 OK
+
+header h1
+fs 2rem OK
+uppercase OK
+
+.search
+flex OK
+aling item center OK
+
+.search input
+height 3.2rem OK
+boreder 1px solid ccc OK
+border radius .4rem 0 0 .4rem OK
+padding 0 .8rem OK
+
+.search button
+backgorun qu estava no button OK
+border radiu 0 .4rem .4rem0 OK
+height 3.2trem OK
+boreder none OK
+paddin 0 1rem OK
+cursor pointer OK
+
+seact button:hover
+filter brightness 1.1 OK
+
+table
+width 100% OK
+border-collapse collapse OK 
+box-shadow 0 1rem 2rem -1rem rgba(0,0,0,.3) OK
+
+table 8 
+fonte size 1.4rem Ok
+color rtext-color OK
+
+table th
+backgorund primary-color OK
+text aling left OK
+font-weight normal OK
+paddin 1.5rem OK
+
+table th:first-child
+border-top-left-radius .4rem OK
+table th:last-chikd
+border-top-right-radius .4re OK
+
+table td
+padding 1.5remtext-aling lef OK
+
+table:tr:nth-child(odd)
+backgorund ddd OK
+
+table tr:nth-child(even)
+background eee OK
+
+td.user
+flex OK
+aling-itms center ok
+gap 1rem ok
+
+td.user img 
+width 5 rem OK
+height 5rem OK
+object-fit cover OK 
+border-radiu 50% OK 
+
+td.user a 
+decoration none OK 
+td.user a p 
+font-weight bold OK
+
+td .remove
+backgorund none OK
+border none OK
+color red OK
+
+
+Criar um aquivo main.JS OK
+   import favoretesView OK
+   new FavoritesView('#app') OK
+Criar um aquivo favorites.JS OK
+Criar um a classe Favorites OK
+  - constructor(root) OK
+    -this.root recebe o querySelector do root OK
+  
+export class FavoritesView extends Favorites OK
+  construcot root OK
+    super(root) OK
+  função update
+    -chamndo o removeAllTr
+  função removeAllTr
+    -tbody = this.root pegar o tbody OK
+    -pelo tbody pegar todas as linhas.ForEach(tr =>this.tr) OK
+
+  função creatRow
+    tr = utilizar o createElement para criar o tr
+     content= dentro de um template literal pegar o que tiver dentro tr do html e atribuir aqui
+    colocar o content dentro do tr como html
+    retorna o tr
+
+
+  CSS
+  td. remove  cursor pointer OK
+
+  Em Favorites.JS
+  pegar o botão de remove criar um evento utilizando o onclick OK
+  o evento recebe uma arrow function OK
+  Na arrow 
+  - criar um constante isOK que recebe o confirm OK
+  - utilizar o confirm para mandar uma mensagem de confimação para exclução OK
+ - Fazer uma verificação se o isOk é true OK
+    -Se sim utilizar o this.delete e passar o user OK
+
+ Em Favorites 
+ Criar uma função delete que recebe o user OK
+ -criar uma contante filteredEntries que recebe o entries e faça o um filtro utilizando o filter OK
+  - dentro da função do filter fazer a verificação se o entry.login é igual ao passado pelo user OK
+colocar no this.entries o filteredEntries OK
+chamar o this.update OK
+
+Em laod
+criar uma constante entries que recebe o JSON.parse(localStorage.getItem('@github-favorites:))||[] OK
+
+export class GithubUser
+  -static search(username) OK
+    -endpoint = 'https://api.gitgub.com/users/${username} OK
+    -return fetch(endpoint).then(data=>data.json).then (data=>({login:data.login,
+    name:data.data.name,
+    public_repos:data.public_repos,
+    followers:data.followers})) OK
+
+FavoritesView
+chamar o onadd no construct
+criar a função onadd()
+  - atribuir a variavel addButton o botão do search
+  -criar um evento de click
+      - pegar o value de forma destruturada do input
+  -chamar a função add passando o value
+  Em Favorites
+  
+criar uma funçaõ add assincrona
+  - atribuir a variavel user a chamda do GithubUser de forma assincrona OK
+  -circundar o codigo no tr catch OK
+  - fazer uma verificação se o user.login é undefined OK
+    se sim criar um erro atraveis do throw com usuario não encontrado OK
+    Dentro do catch passar um alert ao usuário com a mensagem de erro OK
+  - entries recebe um spread mandando para o array o user e o entries antigo  Ok
+  - chamar a função update OK
+  - chamar a função save OK
+
+Criar uma função save
+  -localStorage.setItem('@github-favorites:',JSON.stringify(this.entries))  OK
+
+Em delete 
+-chamar a funçaõ save OK
+
+Em add
+ - contante userExists recebe a função find(entry=>entry.login ===username) OK
+
+ - se o userExists for true mandar um novo erro com usuário já cadastrado OK
+
+ Criar um arquivo GithubUser.js e exportar ele no favorites Ok
+
+
+
+

@@ -1,0 +1,46 @@
+Criando o html e o css
+
+html
+main -> p ,h1,p,a, ul li*3
+
+css
+Importar fonte epilogue extrabold
+pagina-> remover magin paddin e colocar border box
+body -> background padding 60 23 66 
+h1 -> font-family
+ul-> tirar as bolinhas
+
+h1->tamanho fonte em rem e line-heigt
+body -> tamanho fonte e mudar unidades
+pagina -> colocar com porcentagem e relativo a 10px 62.5%
+
+Importar fonte epilogue 400 regular e 700bold
+main p 1-> tamnho da fonte line heigth letter space e uppercase color margin
+body -> vai receber o font-family
+h1->margin bottom 
+h1+p -> color line heigth margin bottom 
+a -> color  tirar decoração 
+a:hover -> bold
+ul-> margin top
+
+ul li span -> font weight size line heigth letter spacing(px) color 
+ul li -> font weight font size line heigth color max-width  flex gap
+main-> max-width 33rem margin 0 autp
+
+----DESKTOP
+media queries
+@media(min-width:ponte de quebra)
+Definir media de largura minima de 40em
+
+html
+div -> todo condeudo até o a 
+
+css
+media 700px
+body->padding 8rem
+main-> flex gap 10 max width 1020px
+main div a primeira -> max width 484px
+ul li-> gap 5.3rem max-width 450 aling center 
+
+fora do media
+ul li + li ->  margin top 3.2rem

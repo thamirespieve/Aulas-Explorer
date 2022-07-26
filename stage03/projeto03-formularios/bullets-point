@@ -1,0 +1,92 @@
+-Label, for do label deve ser o mesmo id do input referente.
+-inputs
+
+-select tem uma tag propria, dentro dela tem que urilizar a tag options para descrever cada opção existente para seleção
+
+-Form é uma tag para definir formulários. possuem dois atributos principais o actin e o method
+-method em formulários os mais utilizados são get e post
+-get enviar e receber recursos
+
+- envia dados pela url
+  -post apenas envia dados
+- envio via body
+
+action- é para onde vai depois de ser enviado o formulário. se vazio ficar na mesma página
+
+input submit faz o envio do formulario
+
+-cabeçalho h1 p
+-form
+
+fontes:
+Poppins regular
+Archivo bold e semibold
+h1 archivo bold 36px line 42
+body popins
+body::before
+classe page tamanho da page e alinhamento
+header tamanho e margin top
+form
+
+filedset e legend no form
+form padding
+fieldset sem bordar
+fieldset legend familia font weight tamanho line borda embaixo width 100% padding
+
+input-wrapper label input flex column
+label tamanho line e color margin bottom
+span margin left tamanho line color
+input border border radiu background height padding color tamanho e line
+pagina toda box sizing margin e padding
+
+h1 margin bottom
+
+Adicionando o campo link whatsapp e inf extra(textarea)
+class fieldset-wrapper com tudo dentro
+fieldset-wrapper display flex gap e direção por column
+textarea pegando as especificações do input
+text area com paddin0 e altura de 156px
+span e cor input no hover 6c6a71
+
+input select opçoes oa vivo , podcast, mentoria(mentorhsip)
+css select recebe propriedades do input
+select apperance -webkit Copiar o svf da setinha e transgorma em css pelo site background img repeat e position rigth 24px top50%
+
+Privacidade
+fieldset wraper e legend
+form flex colum 48px
+adicionando os campos email e password
+
+Dia Hora
+fieldset wraper e legend
+class col-3 canois dara das ate
+flex 20px
+col-3>div:nth-child(1) width:100%
+
+Privacidade
+adidicionando o checkbox
+mudar input-wrapper para checkbo-wrapper
+checkbox label junto com input-wrapper label
+checkbox label margin 0 display flex 16px
+checkbox input display none
+checkbox label before altura largura 24 bord 1px solid e6e6f8 radius 8 display block
+chackbox input:checked + label::before{
+copiar o check e jogar aqui pelo backgorun image
+}
+checboxwrapper input absolute top e left opacity 0 altura largura 24px
+checkboxwrapper relative
+checkboxwrapper input:focus + label::before {
+outline:2px solid black
+}
+
+
+footer  class button input submit
+footer background alt 136px flex column paddin 40 64 margin bottom 100 border-top 1px solid d6d6d6 radius 0 0 8 8
+button altura 56 cor radius 8px  font family size line border 0
+form radius 8 8 0 0
+button hover 08a04c
+
+no form criar um id my-form e no inut do submit colocar uma propriedade form com o mesmo valor do id do form
+Adicionar o atributo required nos inputs propriedade min-length
+input:invalid border 1 px solid ff1010
+

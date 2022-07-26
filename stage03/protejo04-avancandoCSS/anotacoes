@@ -1,0 +1,59 @@
+Criar HTML titulo Componente
+Criar CSS
+
+HTML
+header -> p,h1
+main ->div card -> img(unsplash) h2+span
+
+CSS
+pegar fonte epilegue 400 800
+root->Criar variaveis para as fontes familys --ff-heading e ff-textinf bg-primary 28293E fc-primary fff fc-secundarybbb3e6
+body->font texting color primary
+header-> fonte heading
+header p -> color secundary
+root: variavel hue 250, utilizar ele no começo das cores, mudar as cores para hsl
+
+*->resetar css
+root->fs-body fs-heading
+header-> font aling margin 10rem 0 8rem
+header p -> letter spacing,fs-heading margin bottom line-height font-wigth
+header h1 -> fs-heading font-weith 800 line height
+
+HTML
+class page -> header main
+
+CSS
+page-> max-width margin para centralizar
+img ->width 100% heigth auto
+
+card-> relativo
+card img ->altura object-fit cover
+card h2 -> absolute btoom left
+
+root->criar fc-secondary-dark
+card h2 span ->radius backgroun fc primary, font-size body, color fc-secundary-dark font-weigth padding height inline-flex center
+card-> ff-heading 
+card h2 -> fs-heading weight flex column gap 
+card h2 span -> width fit-content
+main->grid gap
+card img -> radius
+
+img:hover -> transform scale 1.1
+card img-> transition tranform 200ms
+
+ANIMAÇÃO
+header-> animation topdown 700ms
+@keyframes topdown começa em 0% com opacity 0 e tranformY de -15 depois 100% opacity 1 e translateY 0
+
+@media-> min-width: 930px 
+main-> template A B C D 
+main div -> pegar cada div e pegar cada uma 
+fora do media -> no card mudar o tamanho do h2 para 4 rem
+
+@media(min-width :700)
+
+.page-> max-width 117rem padding 0 5
+root -> mudar o tamnho do titulo
+main -> template coumns 1fr
+
+img-> filter 0.5
