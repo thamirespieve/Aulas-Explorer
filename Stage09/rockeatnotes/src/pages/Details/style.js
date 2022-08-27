@@ -10,6 +10,12 @@ export const Container = styled.div`
   grid-template-areas:
     'header'
     'content';
+
+  > main {
+    grid-area: 'content';
+    overflow-y: scroll;
+    padding: 64px 0;
+  }
 `
 export const Links = styled.ul`
   list-style: none;
@@ -20,5 +26,30 @@ export const Links = styled.ul`
 
   a {
     color: ${({ theme }) => theme.COLORS.WHITE};
+  }
+`
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 550px;
+
+  > button:first-child {
+    align-self: end;
+  }
+
+  > h1 {
+    font-weight: 500;
+    font-size: 36px;
+    padding-top: 64px;
+  }
+
+  p {
+    font-size: 16px;
+    text-align: justify;
+    color: ${({ theme }) => theme.COLORS.WHITE};
+
+    margin-top: 16px;
   }
 `
