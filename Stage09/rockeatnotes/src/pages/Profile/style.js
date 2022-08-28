@@ -27,7 +27,7 @@ export const Form = styled.form`
   margin: 30px auto 0;
 
   > div:nth-child(4) {
-    margin-top: 24px;
+    margin-top: 20px;
   }
 `
 
