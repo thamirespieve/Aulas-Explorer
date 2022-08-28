@@ -4,6 +4,8 @@ import {Container, Form, BackgroundImg} from "./style"
 
 import { Input } from "../../components/Input"
 import { Button } from "../../components/Button"
+
+import {Link} from "react-router-dom"
 export function SingUp(){
 
   return(
@@ -22,7 +24,7 @@ export function SingUp(){
 
         <Button title="Cadastrar"/>
 
-        <a href="#">Voltar para o login</a>
+        <Link to="/">Voltar para o login</Link>
       </Form>
 
     </Container>
