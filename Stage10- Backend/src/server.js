@@ -6,8 +6,10 @@ const api = express()
 const routes = require('./routes/index.js')
 const AppError = require('./utils/AppError.js')
 const migations = require('./database/sqlite/migrations')
+const uploadConfig = require('./configs/upload')
 
 api.use(express.json())
+api.use('/files', express.static(uploadConfig.UPLOADS_FOLDER))
 api.use(routes)
 
 migations()
