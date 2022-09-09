@@ -1,8 +1,10 @@
 require('express-async-errors')
 
 const express = require('express')
-
+const cors = require('cors')
 const api = express()
+api.use(cors())
+
 const routes = require('./routes/index.js')
 const AppError = require('./utils/AppError.js')
 const migations = require('./database/sqlite/migrations')
