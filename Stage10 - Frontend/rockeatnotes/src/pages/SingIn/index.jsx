@@ -6,7 +6,14 @@ import {Button} from "../../components/Button"
 
 import { Link } from "react-router-dom";
 
+import { useContext } from "react";
+import { useAuth } from "../../hooks/auth";
+
 export function SingIn(){
+
+  const data = useAuth()
+
+  console.log("Meu contexto =>", data)
 
   return(
   <Container>
