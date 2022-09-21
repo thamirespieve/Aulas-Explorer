@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {FiMail,FiLock} from "react-icons/fi"
 import { Container,Form,BackgroundImg } from "./style";
 
@@ -6,14 +7,20 @@ import {Button} from "../../components/Button"
 
 import { Link } from "react-router-dom";
 
-import { useContext } from "react";
 import { useAuth } from "../../hooks/auth";
 
 export function SingIn(){
 
-  const data = useAuth()
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
 
-  console.log("Meu contexto =>", data)
+  const {singIn} = useAuth()
+
+  function handleSingIn(){
+    
+    singIn({email,password})
+
+  }
 
   return(
   <Container>
@@ -22,11 +29,11 @@ export function SingIn(){
     <p>Aplicação para salvar e gerenciar seus links úteis.</p>
 
     <h2>Faça seu login</h2>
-    <Input type="text" placeholder="E-mail" icon={FiMail}/>
-    <Input type="password" placeholder="Senha" icon={FiLock}/>
+    <Input type="text" placeholder="E-mail" icon={FiMail} onChange={(event)=>setEmail(event.target.value)} />
+    <Input type="password" placeholder="Senha" icon={FiLock} onChange={(event)=>{setPassword(event.target.value)}} />
 
     
-    <Button title="Entrar"/>
+    <Button title="Entrar" onClick={handleSingIn} />
 
     <Link to="/register">Criar conta</Link>
     </Form>
