@@ -14,7 +14,7 @@ function AuthProvider({children}){
       const response = await api.post("/sessions",{email,password})
       const {user,token} = response.data
 
-      api.defaults.headers.authorization = `Bearer ${token}`
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
       localStorage.setItem("@rocketnotes:user",JSON.stringify(user))
       localStorage.setItem("@rocketnotes:token",token)
@@ -45,7 +45,7 @@ function singOut(){
     const user = localStorage.getItem("@rocketnotes:user")
 
     if(token && user){
-      api.defaults.headers.authorization = `Bearer ${token}`
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
       setData({token, user:JSON.parse(user)})
     }
