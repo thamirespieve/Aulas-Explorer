@@ -7,6 +7,30 @@ export const AuthContext = createContext({})
 function AuthProvider({children}){
   const [data, setData] = useState({})
 
+  async function updateProfile({user}){
+
+    try {
+
+      await api.put("/users",user)
+
+      localStorage.setItem("@rocketnotes:user",JSON.stringify(user))
+
+      setData({user,token:data.token})
+
+      alert("Perfil atualizado com sucesso!")
+      
+    } catch (error) {
+      
+      if(error.response){
+        alert(error.response.data.message)
+      }else{
+        alert("Não foi possível atualizar as informações deste perfil. Tente novamente mais tarde!")
+      }
+
+    }
+
+  }
+
   async function singIn({email,password}){
 
     try {
@@ -58,6 +82,7 @@ function singOut(){
      value={
       {singIn,
       singOut,
+      updateProfile,
       user:data.user}}>
       {children}
     </AuthContext.Provider>
