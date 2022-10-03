@@ -7,9 +7,18 @@ export const AuthContext = createContext({})
 function AuthProvider({children}){
   const [data, setData] = useState({})
 
-  async function updateProfile({user}){
+  async function updateProfile({user,avatarFile}){
 
     try {
+
+      if(avatarFile){
+        const filesUploadForm = new FormData()
+        filesUploadForm.append("avatar", avatarFile)
+
+        const response = await api.patch("users/avatar",filesUploadForm)
+        user.avatar=response.data.avatar
+      
+      }
 
       await api.put("/users",user)
 

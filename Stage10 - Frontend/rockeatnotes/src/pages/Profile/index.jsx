@@ -4,19 +4,23 @@ import{FiUser,FiMail,FiLock,FiArrowLeft,FiCamera} from "react-icons/fi"
 import{useAuth} from "../../hooks/auth"
 
 import { Container,Form,Avatar } from "./style";
+import avatarPlaceholder from "../../Assets/avatar_placeholder.svg"
 
 import {Input} from "../../components/Input"
 import {Button} from "../../components/Button"
+import { api } from "../../services/api";
 
 export function Profile(){
 
    const {user,updateProfile} = useAuth()
+   const avatarURL = user.avatar? `${api.defaults.baseURL}/files/${user.avatar}`:avatarPlaceholder
 
    const [name,setName] = useState(user.name)
    const [email,setEmail] = useState(user.email)
    const [passwordOld, setPasswordOld] = useState() 
    const [passwordNew, setPasswordNew] = useState()
-
+   const [avatar,setAvatar] =useState(avatarURL)
+   const [avatarFile,setAvatarFiles] = useState(null)
 
   async function handleUpdate(){
 
@@ -27,7 +31,17 @@ export function Profile(){
       old_password:passwordOld,
     }
 
-    await updateProfile({user})
+    await updateProfile({user,avatarFile})
+
+  }
+
+  function handleChangeAvatar(event){
+
+    const file = event.target.files[0]
+    const imageProfile = URL.createObjectURL(file)
+
+    setAvatar(imageProfile)
+    setAvatarFiles(file)
 
   }
 
@@ -42,12 +56,14 @@ return(
 
     <Form>
       <Avatar>
-         <img src="https://github.com/thamirespieve.png" alt="Foto de usuário do github" />
+         <img src={avatar} alt="Foto de usuário do github" />
 
          <label htmlFor="avatar">
           <FiCamera/>
           <input id="avatar"
-          type="file"/>
+            type="file"
+            onChange={handleChangeAvatar}
+          />
          </label>
       </Avatar>
       <Input type="text" placeholder="Usuário" icon={FiUser} value={name} onChange={event=>setName(event.target.value)}/>
