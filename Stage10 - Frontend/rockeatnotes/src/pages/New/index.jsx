@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Container,Form } from "./style";
 
@@ -9,13 +9,18 @@ import {Textarea} from "../../components/Textarea"
 import {Button} from "../../components/Button"
 import {NoteItem} from "../../components/NoteItem"
 import { useState } from "react";
+import { api } from "../../services/api";
 export function New(){
+  const [ title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
   
   const [links,setLinks] = useState([])
   const [newLink,setNewLink] = useState("")
 
   const [tags, setTags] = useState([])
   const [newTag, setNewTag] = useState("")
+
+  const navigate = useNavigate()
 
   function handleAddLink(){
     setLinks(prevState => [...prevState,newLink])
@@ -35,6 +40,31 @@ export function New(){
     setTags(prevState=>prevState.filter(tag=> tag != deleted))
   }
 
+  async function handleNewNote(){
+    if(!title) {
+      return alert("É necessário informar um titulo para sua nota.")
+    }
+
+    if(newLink){
+      return alert("Você informou um link e não o adicionou em sua nota. Adicine o link ou limpe o campo")
+    }
+
+    if(newTag){
+      return alert("Você informou uma tag e não a adicionou em sua nota. Adicine a tag ou limpe o campo")
+    }
+
+    await api.post("/notes",{
+      title,
+      description,
+      tags,
+      links
+    })
+    
+    alert(`A nota ${title}, foi salva com sucesso`)
+    navigate("/")
+
+  }
+
   return(
     <Container>
       <Header/>
@@ -45,8 +75,8 @@ export function New(){
             <Link to="/">Voltar</Link>
           </header>
 
-        <Input type='text' placeholder="Título" />
-        <Textarea placeholder="Observações"/>
+        <Input type='text' placeholder="Título" onChange ={(event)=> setTitle(event.target.value)} />
+        <Textarea placeholder="Observações" onChange={(event)=>setDescription(event.target.value)} />
 
         <Section title="Links úteis">
           {
@@ -85,7 +115,7 @@ export function New(){
             />
           </div>
          </Section>
-         <Button title="Salvar"/>
+         <Button title="Salvar" onClick={handleNewNote} />
         </Form>
       </main>
       
